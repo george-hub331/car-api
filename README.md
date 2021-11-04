@@ -32,9 +32,11 @@ I have issues creating a screen cast video, most screen cast applications i have
 - well i would like to add html forms
 - ability to add multiple cars at a time to reduce latency
 
-
+# extensions
+- used json formatter, a chrome extension that formats json
 
 # Issues
 
-- Had issues running postman which is why i used only get request
+- Had issues running postman which is why i used only get requests
 
+[github-repository]{https://github.com/george_hub331/car-api}
