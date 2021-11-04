@@ -4,6 +4,6 @@ header('content-Type: application/json');
 
 $a = new car($_GET['id']);/*this is the unique id */
 
-echo $a->fetch( $_GET['num'] /*this is the number of last known location that should be loaded*/);
+echo $a->fetch(isset($_GET['num']) ? $_GET['num'] : 5 /*this is the number of last known location that should be loaded*/);
 
 ?>
