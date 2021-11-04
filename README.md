@@ -10,7 +10,13 @@ conf.php contains the configuration for the web host, your server name, username
 It contains the database also
 
 The api uses get requests only
-the endpoint files are 
+the end point files are 
+
+- addcar.html
+- addlocation.html
+- viewlast.html
+
+the api files are 
 
 - add_location.php to add location to the database requires get requests
 
