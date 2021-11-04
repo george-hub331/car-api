@@ -71,9 +71,9 @@ class car{
 
     function createC($currentKM = 0,$car_model = "",$license_plate = "",$maxLoad = "",$fuelType = ""){
         global $my;
-        $xx = $this -> sel();
+        
         $c = $this -> car;
-        if(!isset($xx)){
+
             $xv = [];
             $xv[] = [
                 "car_model"=>$car_model,
@@ -87,9 +87,7 @@ class car{
             }else{
                 return "Sorry $car_model could not be added to our database";
             }
-        }else{
-            return "This Car Already Exists In Our Database, To Differenciate Add A Model Number";
-        }        
+            
     } 
 }
 ?>
