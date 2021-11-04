@@ -29,7 +29,7 @@ I have issues creating a screen cast video, most screen cast applications i have
 
 # constructive feedback about improving the assignment.
 
-- well i would like to add html forms in order to make the api more easily used
+- well i would like to add html forms
 - ability to add multiple cars at a time to reduce latency
 
 
