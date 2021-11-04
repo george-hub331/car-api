@@ -13,7 +13,7 @@ class car{
    protected function sel(){
         global $my;
         $c = $this->car;
-        $v = mysqli_query($my, "SELECT * FROM cars where id = '$c' or name = '$c'");
+        $v = mysqli_query($my, "SELECT * FROM cars where name = '$c'");
         if($v){
             return mysqli_fetch_assoc($v);
         }
@@ -60,7 +60,7 @@ class car{
                 "time" => $time
             ];
             $oo = json_encode($oo);
-            if(mysqli_query($my,"UPDATE cars set locations = '$oo' where id = '$c' or name = '$c'")){
+            if(mysqli_query($my,"UPDATE cars set locations = '$oo' where name = '$c'")){
                 return "Location Added Successfully";
             }else{
                 return "something went wrong please try again";

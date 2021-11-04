@@ -13,8 +13,13 @@ The api uses get requests only
 the end point files are 
 
 - addcar.html
+      to add a car to the database
+
 - addlocation.html
+      to add location to a car
+      
 - viewlast.html
+      to view x last locations
 
 the api files are 
 
