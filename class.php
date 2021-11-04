@@ -26,7 +26,7 @@ class car{
            $y = json_decode($ll['info'],true);
            $z = json_decode($ll['locations'],true);
 
-           $zz = array_reverse($z); 
+           $zz = array_reverse($z,true); 
             $lll = [];
             $num = 0;
             foreach($zz as $in => $mm){
