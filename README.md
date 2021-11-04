@@ -12,11 +12,9 @@ It contains the database also
 The api uses get requests only
 the endpoint files are 
 
-- add_location.php to add location to the database
-requires get requests
+- add_location.php to add location to the database requires get requests
       "id" => unique id of the model, "long" => longitude, "lat" => latitude, "date" => "date", "time" => time
 - add_car.php adds a car to the database
-
       "id" => unique id of the car, "model" => model of the car, "fuel" => fuel type, "max_load" => max load in kg, "km" => current kilometer
       
 - last_known.php to view a the last x known location of a car model in json format
@@ -33,7 +31,7 @@ I have issues creating a screen cast video, most screen cast applications i have
 # extensions
 - used json formatter, a chrome extension that formats json
 
-# Issues
+Issues
 
 - Had issues running postman which is why i used only get requests
 
