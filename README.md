@@ -26,11 +26,13 @@ the endpoint files are
       "id" => unique id of the model, "num" => last num locations
 
 # Missing specification
-I have issues creating a screen cast video, most screen cast applications i have used or checked do not add the audio
+- I could not add the ability to view the latitude and longitude on google map
+- I could not add styles and forms, this was because i did not start the project early
+- I have issues creating a screen cast video, most screen cast applications i have used or checked do not add the audio
 
 # constructive feedback about improving the assignment.
 
-- well i would like to add html forms
+- well i would like to add html forms and styles and also the ability to view on google maps
 - ability to add multiple cars at a time to reduce latency
 
 # extensions
