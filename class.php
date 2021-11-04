@@ -56,6 +56,7 @@ class car{
                 "longitude" => $longitude,
                 "latitude" => $latitude,
                 "date" => $date,
+                "maps"=>"https://maps.google.com?q=$latitude,$longitude",
                 "time" => $time
             ];
             $oo = json_encode($oo);
