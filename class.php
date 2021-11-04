@@ -13,7 +13,7 @@ class car{
    protected function sel(){
         global $my;
         $c = $this->car;
-        $v = mysqli_query($my, "SELECT * FROM cars where id = '$c'");
+        $v = mysqli_query($my, "SELECT * FROM cars where id = '$c' or name = '$c'");
         if($v){
             return mysqli_fetch_assoc($v);
         }
@@ -59,7 +59,7 @@ class car{
                 "time" => $time
             ];
             $oo = json_encode($oo);
-            if(mysqli_query($my,"UPDATE cars set locations = '$oo' where id = '$c'")){
+            if(mysqli_query($my,"UPDATE cars set locations = '$oo' where id = '$c' or name = '$c'")){
                 return "Location Added Successfully";
             }else{
                 return "something went wrong please try again";
@@ -82,7 +82,7 @@ class car{
                 "max_load_in_kg"=>$maxLoad
             ];
             $xz = json_encode($xv);
-            if(mysqli_query($my,"INSERT INTO cars(info) values('$xz')")){
+            if(mysqli_query($my,"INSERT INTO cars(name, info) values('$c','$xz')")){
                 return $car_model." Has Been Added Successfully";
             }else{
                 return "Sorry $car_model could not be added to our database";
