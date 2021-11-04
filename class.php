@@ -28,7 +28,7 @@ class car{
 
            $zz = array_reverse($z,true); 
             $lll = [];
-            $num = 0;
+            $num = 1;
             foreach($zz as $in => $mm){
                 if($num <= $last){
                     $lll[] = $mm;
@@ -53,7 +53,7 @@ class car{
             $oo = json_decode($db['locations'], true);
 
             $oo[] = [
-                "logitude" => $longitude,
+                "longitude" => $longitude,
                 "latitude" => $latitude,
                 "date" => $date,
                 "time" => $time
@@ -71,7 +71,7 @@ class car{
 
     function createC($currentKM = 0,$car_model = "",$license_plate = "",$maxLoad = "",$fuelType = ""){
         global $my;
-        
+
         $c = $this -> car;
 
             $xv = [];
