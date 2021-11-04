@@ -1,8 +1,8 @@
 <?php
 require 'class.php';
 
-$a = new car($_POST['id']);/*this is unique id*/
+$a = new car($_GET['id']);/*this is unique id*/
 
-echo $a->createLoc($_POST['lat']/*latitude*/,$_POST['long']/*longitude*/,$_POST['date']/*date*/,$_POST['time']/*time*/);
+echo $a->createLoc($_GET['lat']/*latitude*/,$_GET['long']/*longitude*/,$_GET['date']/*date*/,$_GET['time']/*time*/);
 
 ?>
