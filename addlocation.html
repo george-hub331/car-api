@@ -8,7 +8,7 @@
 
         <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
-        <title>Add Car</title>  
+        <title>Add Location</title>  
     </head>
     <body class="signup">
         <div class="l-form">
@@ -17,29 +17,19 @@
 
             <div class="form">
                 
-                <form method="GET" entype="multipart/form-data" action="add_car.php" class="form__content signup">
-                    <h1 class="form_title"><span>Add Car</span></h1>
+                <form method="GET" entype="multipart/form-data" action="add_location.php" class="form__content signup">
+                    <h1 class="form_title"><span>Add Location</span></h1>
+
                     <div class="form__div form__div-one">
                         <div class="form__icon">
                             <i class='bx bx-user'></i>
                         </div>
 
                         <div class="form__div-input">
-                            <label for="" class="form__label">Unique ID</label>
+                            <label for="" class="form__label">Unique Id</label>
                             <input name="id" type="text" class="form__input">
                         </div>
                     </div>
-                    <div class="form__div form__div-one">
-                        <div class="form__icon">
-                            <i class='bx bx-user'></i>
-                        </div>
-
-                        <div class="form__div-input">
-                            <label for="" class="form__label">Distance Travelled In Km</label>
-                            <input name="km" type="text" class="form__input">
-                        </div>
-                    </div>
-
 
                     <div class="form__div form__div-one">
                         <div class="form__icon">
@@ -47,8 +37,20 @@
                         </div>
 
                         <div class="form__div-input">
-                            <label for="" class="form__label">Model</label>
-                            <input name="model" type="text" class="form__input">
+                            <label for="" class="form__label">Latitude</label>
+                            <input name="lat" type="text" class="form__input">
+                        </div>
+                    </div>
+
+
+                    <div class="form__div form__div-one">
+                        <div class="form__icon">
+                            <i class='bx bx-user'></i>
+                        </div>
+
+                        <div class="form__div-input">
+                            <label for="" class="form__label">Longitude</label>
+                            <input name="long" type="text" class="form__input">
                         </div>
                     </div>
 
@@ -58,8 +60,8 @@
                         </div>
 
                         <div class="form__div-input">
-                            <label for="" class="form__label">License Plate</label>
-                            <input name="license_plate" type="text" class="form__input">
+                            <label for="" class="form__label">Date</label>
+                            <input name="date" type="date" class="form__input">
                         </div>
                     </div>
                     <div class="form__div form__div-one">
@@ -68,24 +70,11 @@
                         </div>
 
                         <div class="form__div-input">
-                            <label for="" class="form__label">Max Load (Kg)</label>
-                            <input name="max_load" type="text" class="form__input">
+                            <label for="" class="form__label">Time</label>
+                            <input name="time" type="time" class="form__input">
                         </div>
                     </div>
-                     <div class="form__div form__div-one">
-                        <div class="form__icon">
-                            <i class='bx bx-group' ></i>
-                        </div>
-
-                        <div class="form__div-input">
-                        <select class="form__input" name="fuel" id="">
-                                <option>Petrol</option>
-                                <option>Gas</option>
-                                
-                                <option>Diesel</option>
-                            </select>
-                        </div>
-                    </div>
+                     
                
                     
                     <input type="submit" class="form__button" value="Next">
