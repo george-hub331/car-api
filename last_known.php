@@ -1,9 +1,9 @@
 <?php
 require 'class.php';
-header('content-Type: text/html');
+header('content-Type: application/json');
 
-$a = new car($_POST['car']);
+$a = new car($_POST['id']);/*this is the unique id */
 
-echo $a->fetch();
+echo $a->fetch( $_POST['num'] /*this is the number of last known location that should be loaded*/);
 
 ?>

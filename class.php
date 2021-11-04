@@ -5,70 +5,87 @@ class car{
 
     public $car = "";
 
-    function __construct(string $c)
+    function __construct($c = "")
     {
-        global $my;
-        if(!empty($c)){
-        $this->car = strtolower(mysqli_real_escape_string($my,$c));
-    }else{
-        echo "No Car Name Was Given";
-        return;
-    }
+        $this->car = $c;//car id
 }
-
+    //select data from database
    protected function sel(){
         global $my;
         $c = $this->car;
-        $v = mysqli_query($my, "SELECT * FROM cars where name = '$c'");
+        $v = mysqli_query($my, "SELECT * FROM cars where id = '$c'");
         if($v){
             return mysqli_fetch_assoc($v);
         }
     }
-    function fetch(){
+
+    //fetch last known locations
+    function fetch($last = 5){
         $ll = $this -> sel();
         if(isset($ll)){
-           $l = json_decode($ll['locations'],true);
-           $mm = "<strong>$ll[name] Last Known Locations</strong><br>";
-           if(!empty($ll['locations'])){
-           foreach($l as $d => $p){    
-            $mm .= "<strong>".date('g:ia d M Y',$d)."</strong><br><span>".$p."</span><br><br>";
-           }
-        }
-           return $mm;
+           $y = json_decode($ll['info'],true);
+           $z = json_decode($ll['locations'],true);
+
+           $zz = array_reverse($z); 
+            $lll = [];
+            $num = 0;
+            foreach($zz as $in => $mm){
+                if($num <= $last){
+                    $lll[] = $mm;
+                }
+                $num++;
+            }
+
+            return json_encode($lll);
+
         }else{
-            return ucwords($this -> car) ." Was Not Found In Our Database";
+            return "ID ".ucwords($this -> car) ." Was Not Found In Our Database";
         }
     }
-
-    function createLoc(string $loc = ""){
+ //add location property
+    function createLoc($latitude = "",$longitude = "", $date = "",$time = ""){
         global $my;
-        $t = time();
-        $c = $this -> car;
-        $locc = mysqli_real_escape_string($my,$loc);
+
+        $c = $this -> car;//car id
+        
         $db = $this -> sel();
         if(isset($db)){
             $oo = json_decode($db['locations'], true);
-            $oo[$t] = $locc;
+
+            $oo[] = [
+                "logitude" => $longitude,
+                "latitude" => $latitude,
+                "date" => $date,
+                "time" => $time
+            ];
             $oo = json_encode($oo);
-            if(mysqli_query($my,"UPDATE cars set locations = '$oo' where name = '$c'")){
+            if(mysqli_query($my,"UPDATE cars set locations = '$oo' where id = '$c'")){
                 return "Location Added Successfully";
             }else{
                 return "something went wrong please try again";
             }
         }else{
-            return $c." does not exist in our db";
+            return "Your ID does not exist in our db";
         }
     }
 
-    function createC(){
+    function createC($currentKM = 0,$car_model = "",$license_plate = "",$maxLoad = "",$fuelType = ""){
         global $my;
         $xx = $this -> sel();
         $c = $this -> car;
         if(!isset($xx)){
-            if(mysqli_query($my,"INSERT INTO cars(name) values('$c')")){
-                return $c." Has Been Added Successfully";
+            $xv = [];
+            $xv[] = [
+                "car_model"=>$car_model,
+                "current_KM"=>$currentKM,
+                "license_plate"=>$license_plate,"fuel_type"=>$fuelType,
+                "max_load_in_kg"=>$maxLoad
+            ];
+            $xz = json_encode($xv);
+            if(mysqli_query($my,"INSERT INTO cars(info) values('$xz')")){
+                return $car_model." Has Been Added Successfully";
             }else{
-                return "Sorry $c could not be added to our database";
+                return "Sorry $car_model could not be added to our database";
             }
         }else{
             return "This Car Already Exists In Our Database, To Differenciate Add A Model Number";
