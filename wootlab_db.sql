@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `cars` (
 --
 
 INSERT INTO `cars` (`id`, `name`, `info`, `locations`) VALUES
-(1, 'car', NULL, '{\"1636031737\":\"Abuja, FCT\",\"1636031738\":{\"logitude\":\"32323\",\"latitude\":\"111\",\"date\":\"20-11-2021\",\"time\":\"7:20am\"},\"1636031739\":{\"logitude\":\"32323\",\"latitude\":\"111\",\"date\":\"20-11-2021\",\"time\":\"7:20am\"},\"1636031740\":{\"logitude\":\"32323\",\"latitude\":\"1211\",\"date\":\"20-11-2021\",\"time\":\"7:20am\"},\"1636031741\":{\"logitude\":\"326323\",\"latitude\":\"1211\",\"date\":\"10-11-2021\",\"time\":\"8:20am\"},\"1636031742\":{\"logitude\":\"326323\",\"latitude\":\"1211\",\"date\":\"10-11-2021\",\"time\":\"8:20am\"}}'),
+(1, 'car', NULL, '{\"1636031737\":\"Abuja, FCT\",\"1636031738\":{\"longitude\":\"7.3986\",\"latitude\":\"9.0765\",\"date\":\"20-11-2021\",\"time\":\"7:20am\"},\"1636031739\":{\"longitude\":\"7.3986\",\"latitude\":\"9.0765\",\"date\":\"20-11-2021\",\"time\":\"7:20am\"},\"1636031740\":{\"longitude\":\"7.3986\",\"latitude\":\"9.0765\",\"date\":\"20-11-2021\",\"time\":\"7:20am\"},\"1636031741\":{\"longitude\":\"7.3986\",\"latitude\":\"9.0765\",\"date\":\"10-11-2021\",\"time\":\"8:20am\"},\"1636031742\":{\"longitude\":\"7.3986\",\"latitude\":\"9.0765\",\"date\":\"10-11-2021\",\"time\":\"8:20am\"}}'),
 (2, NULL, '[{\"car_model\":\"m4\",\"current_KM\":\"10\",\"license_plate\":\"32-3234-2\",\"fuel_type\":\"gas\",\"max_load_in_kg\":null}]', NULL),
 (3, NULL, '[{\"car_model\":\"m4\",\"current_KM\":\"10\",\"license_plate\":\"32-3234-2\",\"fuel_type\":\"gas\",\"max_load_in_kg\":\"20\"}]', NULL),
 (4, NULL, '[{\"car_model\":\"m4\",\"current_KM\":\"10\",\"license_plate\":\"32-3234-2\",\"fuel_type\":\"petrol\",\"max_load_in_kg\":\"20\"}]', NULL),

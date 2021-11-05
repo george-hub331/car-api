@@ -13,7 +13,7 @@ class car{
    protected function sel(){
         global $my;
         $c = $this->car;
-        $v = mysqli_query($my, "SELECT * FROM cars where name = '$c'");
+        $v = mysqli_query($my, "SELECT * FROM cars where id = '$c' || name = '$c'");
         if($v){
             return mysqli_fetch_assoc($v);
         }
@@ -28,16 +28,20 @@ class car{
 
            $zz = array_reverse($z,true); 
             $lll = [];
+            $llz = "<ul>";
             $num = 1;
             foreach($zz as $in => $mm){
                 if($num <= $last){
-                    $lll[] = $mm;
+                    $longitude = !isset($mm["logitude"]) ? $mm["longitude"] : $mm["logitude"];
+                    
+                    $llz .= "<li><strong> $mm[date] - $mm[time] </strong><br><div class='mapouter'><div class='gmap_canvas'><iframe width='400' height='300' id='gmap_canvas' src='https://maps.google.com/maps?q=$mm[latitude],$longitude&t=&z=13&ie=UTF8&iwloc=&output=embed' frameborder='0' scrolling='no' marginheight='0' marginwidth='0'></iframe><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div></div></li><br><br>";
                 }
+                
                 $num++;
             }
-
-            return json_encode($lll);
-
+            $llz .= "</ul>";
+            return $llz;
+           
         }else{
             return "ID ".ucwords($this -> car) ." Was Not Found In Our Database";
         }
