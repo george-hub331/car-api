@@ -17,7 +17,7 @@ the main files are -
 - addlocation.php
       to add location to a car
 
-- viewlast.html
+- viewlast.php
       to view x last locations of a particular car model
 
 
