@@ -35,7 +35,7 @@ class car{
                 if($num <= $last){
                     $longitude = !isset($mm["logitude"]) ? $mm["longitude"] : $mm["logitude"];
                     $latitude = $mm['latitude'];
-                    $date = $mm['date'].' - '.$mm['time'];
+                    $date = $mm['date'];
 
             $mapData[] = ['<div id=\'content\'><div id=\'siteNotice\'></div><div><p>'.$date.'</p></div></div>',$latitude,$longitude];        
                     
@@ -53,6 +53,7 @@ class car{
             ]);
         }
     }
+
  //add location property
     function createLoc($latitude = "",$longitude = "", $date = "",$time = ""){
         global $my;
@@ -62,13 +63,23 @@ class car{
         $db = $this -> sel();
         if(isset($db)){
             $oo = json_decode($db['locations'], true);
+
+            //connvert 24 hr time to 12hr
+            $eTime = explode(':', $time);//breaks the 24hr time into an array of hours and mins
+
+            $dd = (int) $eTime[0] >= 12 ? "pm" : "am";
+
+            $er = $eTime[0] > 12 ? (int) $eTime[0] % 12 : $eTime[0];
             
+            $mTime = $er . ':' . $eTime[1] . $dd;
             
+            //stores the data in an array to be stored in a database
             $oo[] = [
                 "longitude" => $longitude,
                 "latitude" => $latitude,
-                "date" => $date.' - '.$time
+                "date" => $date.' - '.$mTime
             ];
+
             $oo = json_encode($oo);
             if(mysqli_query($my,"UPDATE cars set locations = '$oo' where name = '$c'")){
                 return "Location Added Successfully";
