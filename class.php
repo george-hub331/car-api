@@ -56,7 +56,7 @@ class car{
  //add location property
     function createLoc($latitude = "",$longitude = "", $date = "",$time = ""){
         global $my;
-        $xxx = "<a style='width:calc(100% - 16px);text-align:center;padding:10px;margin-bottom:5px;display:block;background-color:#069C54;color:#fff;' href='addlocation.html'>Add Another Location</a>";
+        
         $c = $this -> car;//car id
         
         $db = $this -> sel();
@@ -82,7 +82,7 @@ class car{
 
     function createC($currentKM = 0,$car_model = "",$license_plate = "",$maxLoad = "",$fuelType = ""){
         global $my;
-        $xxx = "<a style='width:calc(100% - 16px);text-align:center;padding:10px;margin-bottom:5px;display:block;background-color:#069C54;color:#fff;' href='addcar.html'>Add Another Car</a>";
+    
         $c = $this -> car;
 
             $xv = [];
@@ -95,12 +95,11 @@ class car{
             $xz = json_encode($xv);
             
             if(mysqli_query($my,"INSERT INTO cars(name, info) values('$c','$xz')")){
-                return "<div style='width:calc(100% - 16px);text-align:center;background-color: #069C54;color:#fff;padding:10px;margin-bottom:5px;'>$car_model Has Been Added Successfully</div>$xxx";
+                return "<div style='width:calc(100% - 16px);text-align:center;background-color: #069C54;color:#fff;padding:10px;margin-bottom:5px;'>$car_model Has Been Added Successfully</div>";
             }else{
-                return "<div style='width:calc(100% - 16px);text-align:center;background-color: #069C54;color:#fff;padding:10px;margin-bottom:5px;'>Sorry $car_model could not be added to our database</div>$xxx";
+                return "<div style='width:calc(100% - 16px);text-align:center;background-color: #069C54;color:#fff;padding:10px;margin-bottom:5px;'>Sorry $car_model could not be added to our database</div>";
                 
-            }
-            
+            }          
     } 
 }
 ?>
