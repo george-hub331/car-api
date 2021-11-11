@@ -23,45 +23,51 @@ class car{
     function fetch($last = 5){
         $ll = $this -> sel();
         if(isset($ll)){
+            
            $y = json_decode($ll['info'],true);
            $z = json_decode($ll['locations'],true);
 
-           $zz = array_reverse($z,true); 
-            $lll = [];
-            $llz = "<ul>";
+           $zz = array_reverse($z,true);
+       
+            $mapData = [];
             $num = 1;
             foreach($zz as $in => $mm){
                 if($num <= $last){
                     $longitude = !isset($mm["logitude"]) ? $mm["longitude"] : $mm["logitude"];
+                    $latitude = $mm['latitude'];
+                    $date = $mm['date'].' - '.$mm['time'];
+
+            $mapData[] = ['<div id=\'content\'><div id=\'siteNotice\'></div><div><p>'.$date.'</p></div></div>',$latitude,$longitude];        
                     
-                    $llz .= "<li><strong> $mm[date] - $mm[time] </strong><br><div class='mapouter'><div class='gmap_canvas'><iframe width='500' height='400' id='gmap_canvas' src='https://maps.google.com/maps?q=$mm[latitude],$longitude&t=&z=13&ie=UTF8&iwloc=&output=embed' frameborder='0' scrolling='no' marginheight='0' marginwidth='0'></iframe><style>.mapouter{position:relative;text-align:right;height:400px;width:500px;}</style><style>.gmap_canvas {overflow:hidden;background:none!important;height:400px;width:500px;}</style></div></div></li><br><br>";
-                }
+            }
                 
                 $num++;
             }
-            $llz .= "</ul>";
-            return $llz;
+        //returns data 
+            return json_encode($mapData);
            
         }else{
-            return "ID ".ucwords($this -> car) ." Was Not Found In Our Database";
+            //return error message
+            return json_encode([
+                "error" => "<div style='width:100%;text-align:center;background-color: #069C54;color:#fff;padding:10px;margin-bottom:5px;'> ID " . ucwords($this->car) . " Was Not Found In Our Database</div>"
+            ]);
         }
     }
  //add location property
     function createLoc($latitude = "",$longitude = "", $date = "",$time = ""){
         global $my;
-
+        $xxx = "<a style='width:100%;text-align:center;padding:10px;margin-bottom:5px;display:block;background-color:#069C54;color:#fff;' href='addlocation.html'>Add Another Location</a>";
         $c = $this -> car;//car id
         
         $db = $this -> sel();
         if(isset($db)){
             $oo = json_decode($db['locations'], true);
-
+            
+            
             $oo[] = [
                 "longitude" => $longitude,
                 "latitude" => $latitude,
-                "date" => $date,
-                "maps"=>"https://maps.google.com?q=$latitude,$longitude",
-                "time" => $time
+                "date" => $date.' - '.$time
             ];
             $oo = json_encode($oo);
             if(mysqli_query($my,"UPDATE cars set locations = '$oo' where name = '$c'")){
@@ -70,13 +76,13 @@ class car{
                 return "something went wrong please try again";
             }
         }else{
-            return "Your ID does not exist in our db";
+            return "This ID does not exist in our DB";
         }
     }
 
     function createC($currentKM = 0,$car_model = "",$license_plate = "",$maxLoad = "",$fuelType = ""){
         global $my;
-
+        $xxx = "<a style='width:100%;text-align:center;padding:10px;margin-bottom:5px;display:block;background-color:#069C54;color:#fff;' href='addcar.html'>Add Another Car</a>";
         $c = $this -> car;
 
             $xv = [];
@@ -87,10 +93,12 @@ class car{
                 "max_load_in_kg"=>$maxLoad
             ];
             $xz = json_encode($xv);
+            
             if(mysqli_query($my,"INSERT INTO cars(name, info) values('$c','$xz')")){
-                return $car_model." Has Been Added Successfully";
+                return "<div style='width:100%;text-align:center;background-color: #069C54;color:#fff;padding:10px;margin-bottom:5px;'>$car_model Has Been Added Successfully</div>$xxx";
             }else{
-                return "Sorry $car_model could not be added to our database";
+                return "<div style='width:100%;text-align:center;background-color: #069C54;color:#fff;padding:10px;margin-bottom:5px;'>Sorry $car_model could not be added to our database</div>$xxx";
+                
             }
             
     } 
