@@ -20,7 +20,7 @@
 
         <div class="form">
 
-            <form method="POST" entype="multipart/form-data" action="last_known.php" class="form__content signup">
+            <form method="GET" entype="multipart/form-data" action="last_known.php" class="form__content signup">
                 <h1 class="form_title"><span>View Last Locations</span></h1>
 
                 <div class="form__div form__div-one <?php echo isset($_GET['mode']) ? 'focus' : ''; ?>">
